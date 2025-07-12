@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vocabulary</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th,
+    td {
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #4343ff;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #eef;
+    }
+</style>
+
+<body>
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Vocabulary</h1>
+            <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+        </div>
+
+        <!-- Slide-in Navbar (right side) -->
+        <nav id="nav-menu" class="slide-nav">
+            <a href="../index.html">Main</a>
+            <a href="vocabulary.html" class="active">Vocabulary</a>
+            <a href="vocabulary-books.html">Books</a>
+        </nav>
+    </header>
+
+
+    <!-- Main content -->
+    <main class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>🇬🇧 English</th>
+                    <th>📢O'qilishi</th>
+                    <th>🇺🇿 O‘zbekcha</th>
+                </tr>
+            </thead>
+            <tbody id="wordTableBody">
+                <!-- So‘zlar shu yerga qo‘shiladi -->
+            </tbody>
+        </table>
+    </main>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDkvhqGg69i7LdYZMPXS__MVwB-JNOBkMA",
+            authDomain: "vocabulary-f4e0e.firebaseapp.com",
+            projectId: "vocabulary-f4e0e",
+            storageBucket: "vocabulary-f4e0e.appspot.com",
+            messagingSenderId: "290787362747",
+            appId: "1:290787362747:web:c6840562e268859860269e",
+            measurementId: "G-1FRNXY4RVV"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function loadWords() {
+            const docRef = doc(db, "units", "unit1");
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                const words = data.words;
+                const tbody = document.getElementById("wordTableBody");
+                tbody.innerHTML = "";
+
+                words.forEach((word, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${word.english}</td>
+            <td>${word.transcription || "-"}</td>
+            <td>${word.uzbek}</td>
+          `;
+                    tbody.appendChild(row);
+                });
+            } else {
+                alert("❌ Unit1 topilmadi");
+            }
+        }
+
+        loadWords();
+    </script>
+    <script src="../../js/script.js"></script>
+</body>
+
+</html>
