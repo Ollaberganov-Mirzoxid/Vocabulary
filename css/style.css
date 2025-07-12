@@ -6,6 +6,7 @@
 }
 
 body {
+  height: 100%;
   font-family: sans-serif;
   background-color: #f5f5f5;
   color: #333;
@@ -13,6 +14,11 @@ body {
 
 /* Navbar styles */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   background-color: #4e4eff;
   padding: 10px 20px;
   color: white;
@@ -57,6 +63,14 @@ body {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
+
+  
+  position: relative;
+  top: 60px; /* Navbar balandligi */
+  bottom: 50px; /* Footer balandligi */
+  height: calc(100vh - 110px); /* Ekran minus navbar va footer */
+  overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 .card-grid {
@@ -71,11 +85,11 @@ body {
   border-radius: 8px;
   overflow: hidden;
   padding: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.card-link{
+.card-link {
   text-decoration: none;
   color: #000;
 }
@@ -91,34 +105,34 @@ body {
   font-size: 18px;
 }
 
-.card-2{
+.card-2 {
   color: #fff;
   width: 100%;
   background: white;
   border-radius: 8px;
   overflow: hidden;
   padding: 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.card-2 h1{
+.card-2 h1 {
   margin-bottom: 10px;
 }
 
-#card-1{
+#card-1 {
   background-color: red;
 }
 
-#card-2{
+#card-2 {
   background-color: blue;
 }
 
-#card-3{
+#card-3 {
   background-color: orange;
 }
 
-#card-4{
+#card-4 {
   background-color: green;
 }
 
@@ -183,7 +197,7 @@ body {
   z-index: 1100;
 }
 
-.download{
+.download {
   background-color: #4e4eff;
   color: #fff;
   font-weight: bold;
