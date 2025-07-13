@@ -34,7 +34,6 @@
 
     #result-box {
         display: none;
-        margin-top: 20px;
     }
 
     .error-item {
@@ -66,6 +65,20 @@
         color: #4e4eff;
         font-size: 100px;
     }
+
+    .result-div h1{
+        text-align: center;
+    }
+
+    .again-btn{
+        width: 100%;
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 18px;
+        background: green;
+        color: #fff;
+        padding: 10px;
+    }
 </style>
 
 <body>
@@ -96,7 +109,7 @@
             <div id="word"></div>
             <div id="options"></div>
             <div id="feedback"></div>
-            <button onclick="stopTest()" class="stop">⏹ To‘xtatish</button>
+            <button onclick="stopTest()" class="stop">To‘xtatish</button>
         </div>
 
         <div id="result-box"></div>
@@ -217,12 +230,14 @@
             }
 
             resultBox.innerHTML = `
-        <h2>📊 Natijalar:</h2>
-        <p>✅ To‘g‘ri: ${correctCount}</p>
-        <p>❌ Noto‘g‘ri: ${incorrectCount}</p>
-        ${mistakeHtml}
-        <button onclick="location.reload()">🔁 Qayta boshlash</button>
-      `;
+            <div class="result-div">
+                <h1>📊 Natijalar:</h1>
+                <p>✅ To‘g‘ri: ${correctCount}</p>
+                <p>❌ Noto‘g‘ri: ${incorrectCount}</p>
+            </div>
+                ${mistakeHtml}
+            <button onclick="location.reload()" class="again-btn">Qayta boshlash</button>
+            `;
         }
 
         loadWords();
