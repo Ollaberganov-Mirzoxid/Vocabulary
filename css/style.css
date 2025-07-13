@@ -62,11 +62,11 @@ body {
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
 
   
   position: relative;
-  top: 60px; /* Navbar balandligi */
+  top: 50px; /* Navbar balandligi */
   bottom: 50px; /* Footer balandligi */
   height: calc(100vh - 110px); /* Ekran minus navbar va footer */
   overflow-y: auto;
@@ -92,6 +92,11 @@ body {
 .card-link {
   text-decoration: none;
   color: #000;
+}
+
+.card-link-index{
+  text-decoration: none;
+  color: #fff;
 }
 
 .card img {
@@ -178,7 +183,7 @@ body {
 .slide-nav a {
   color: white;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
 }
 
